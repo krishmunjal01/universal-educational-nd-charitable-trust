@@ -11,10 +11,10 @@ import { images, programs, site } from "@/content/site";
 export const Route = createFileRoute("/work")({
   head: () => ({
     meta: [
-      { title: "Our Work — Aashray" },
+      { title: `Our Work — ${site.name}` },
       {
         name: "description",
-        content: "Explore Aashray's programmes in education, livelihoods, health, and environment.",
+        content: `Explore ${site.name}'s programmes in education, livelihoods, health, and environment.`,
       },
     ],
   }),
@@ -28,7 +28,7 @@ function Work() {
       <main>
         <PageHero
           image={images.heroWork}
-          imageAlt="Illustrative placeholder photograph representing Aashray's community-oriented work."
+          imageAlt={`Illustrative placeholder photograph representing ${site.name}'s community-oriented work.`}
           eyebrow="Our work"
           title="Change shaped with communities."
           description="Across education, livelihoods, health, and the environment, we work towards a fairer, healthier, and more sustainable future."
@@ -68,7 +68,7 @@ function Work() {
           </div>
         </section>
 
-        <div aria-label="Aashray programmes">
+        <div aria-label={`${site.name} programmes`}>
           {programs.map((program, index) => {
             const imageFirst = index % 2 === 0;
 
@@ -93,8 +93,8 @@ function Work() {
                         className="mr-3 mb-3"
                       />
                       <figcaption className="mt-5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-                        AI-generated illustrative placeholder photography — not a depiction of
-                        Aashray beneficiaries, staff, projects, or locations.
+                        AI-generated illustrative placeholder photography — not a depiction of{" "}
+                        {site.name} beneficiaries, staff, projects, or locations.
                       </figcaption>
                     </figure>
                   </Reveal>

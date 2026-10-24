@@ -2,12 +2,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 
 import { Reveal } from "@/components/reveal";
-import {
-  Field,
-  SubmissionError,
-  SubmitButton,
-  inputClass,
-} from "@/components/forms/form-controls";
+import { Field, SubmissionError, SubmitButton, inputClass } from "@/components/forms/form-controls";
 import { submitContactMessage } from "@/lib/forms.functions";
 import { contactSchema, fieldErrors } from "@/lib/schemas";
 
@@ -68,7 +63,7 @@ export function ContactForm() {
     <Reveal>
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field id="contact-name" label="Your name" required error={errors['name']}>
+          <Field id="contact-name" label="Your name" required error={errors["name"]}>
             <input
               id="contact-name"
               name="name"
@@ -77,10 +72,10 @@ export function ContactForm() {
               className={inputClass}
               value={values.name}
               onChange={(e) => set("name", e.target.value)}
-              aria-invalid={Boolean(errors['name'])}
+              aria-invalid={Boolean(errors["name"])}
             />
           </Field>
-          <Field id="contact-email" label="Email" required error={errors['email']}>
+          <Field id="contact-email" label="Email" required error={errors["email"]}>
             <input
               id="contact-email"
               name="email"
@@ -89,13 +84,13 @@ export function ContactForm() {
               className={inputClass}
               value={values.email}
               onChange={(e) => set("email", e.target.value)}
-              aria-invalid={Boolean(errors['email'])}
+              aria-invalid={Boolean(errors["email"])}
             />
           </Field>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field id="contact-phone" label="Phone (optional)" error={errors['phone']}>
+          <Field id="contact-phone" label="Phone (optional)" error={errors["phone"]}>
             <input
               id="contact-phone"
               name="phone"
@@ -104,10 +99,10 @@ export function ContactForm() {
               className={inputClass}
               value={values.phone}
               onChange={(e) => set("phone", e.target.value)}
-              aria-invalid={Boolean(errors['phone'])}
+              aria-invalid={Boolean(errors["phone"])}
             />
           </Field>
-          <Field id="contact-subject" label="Subject (optional)" error={errors['subject']}>
+          <Field id="contact-subject" label="Subject (optional)" error={errors["subject"]}>
             <input
               id="contact-subject"
               name="subject"
@@ -115,12 +110,12 @@ export function ContactForm() {
               className={inputClass}
               value={values.subject}
               onChange={(e) => set("subject", e.target.value)}
-              aria-invalid={Boolean(errors['subject'])}
+              aria-invalid={Boolean(errors["subject"])}
             />
           </Field>
         </div>
 
-        <Field id="contact-message" label="Message" required error={errors['message']}>
+        <Field id="contact-message" label="Message" required error={errors["message"]}>
           <textarea
             id="contact-message"
             name="message"
@@ -128,7 +123,7 @@ export function ContactForm() {
             className={inputClass}
             value={values.message}
             onChange={(e) => set("message", e.target.value)}
-            aria-invalid={Boolean(errors['message'])}
+            aria-invalid={Boolean(errors["message"])}
           />
         </Field>
 

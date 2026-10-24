@@ -10,6 +10,7 @@ import {
   selectClass,
 } from "@/components/forms/form-controls";
 import { submitVolunteerApplication } from "@/lib/forms.functions";
+import { site } from "@/content/site";
 import { fieldErrors, volunteerSchema } from "@/lib/schemas";
 
 const interestOptions = [
@@ -95,7 +96,7 @@ export function VolunteerForm() {
     <Reveal>
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field id="volunteer-name" label="Full name" required error={errors['full_name']}>
+          <Field id="volunteer-name" label="Full name" required error={errors["full_name"]}>
             <input
               id="volunteer-name"
               name="full_name"
@@ -104,11 +105,11 @@ export function VolunteerForm() {
               className={inputClass}
               value={values.full_name}
               onChange={(e) => set("full_name", e.target.value)}
-              aria-invalid={Boolean(errors['full_name'])}
-              aria-describedby={errors['full_name'] ? "volunteer-name-error" : undefined}
+              aria-invalid={Boolean(errors["full_name"])}
+              aria-describedby={errors["full_name"] ? "volunteer-name-error" : undefined}
             />
           </Field>
-          <Field id="volunteer-email" label="Email" required error={errors['email']}>
+          <Field id="volunteer-email" label="Email" required error={errors["email"]}>
             <input
               id="volunteer-email"
               name="email"
@@ -117,8 +118,8 @@ export function VolunteerForm() {
               className={inputClass}
               value={values.email}
               onChange={(e) => set("email", e.target.value)}
-              aria-invalid={Boolean(errors['email'])}
-              aria-describedby={errors['email'] ? "volunteer-email-error" : undefined}
+              aria-invalid={Boolean(errors["email"])}
+              aria-describedby={errors["email"] ? "volunteer-email-error" : undefined}
             />
           </Field>
         </div>
@@ -126,7 +127,7 @@ export function VolunteerForm() {
         <Field
           id="volunteer-phone"
           label="Phone (optional)"
-          error={errors['phone']}
+          error={errors["phone"]}
           hint="Only if you're happy to be called."
         >
           <input
@@ -137,19 +138,24 @@ export function VolunteerForm() {
             className={inputClass}
             value={values.phone}
             onChange={(e) => set("phone", e.target.value)}
-            aria-invalid={Boolean(errors['phone'])}
+            aria-invalid={Boolean(errors["phone"])}
           />
         </Field>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field id="volunteer-interest" label="Area of interest" required error={errors['interest']}>
+          <Field
+            id="volunteer-interest"
+            label="Area of interest"
+            required
+            error={errors["interest"]}
+          >
             <select
               id="volunteer-interest"
               name="interest"
               className={selectClass}
               value={values.interest}
               onChange={(e) => set("interest", e.target.value)}
-              aria-invalid={Boolean(errors['interest'])}
+              aria-invalid={Boolean(errors["interest"])}
             >
               <option value="" disabled>
                 Choose an area…
@@ -165,7 +171,7 @@ export function VolunteerForm() {
             id="volunteer-availability"
             label="Availability"
             required
-            error={errors['availability']}
+            error={errors["availability"]}
           >
             <select
               id="volunteer-availability"
@@ -173,7 +179,7 @@ export function VolunteerForm() {
               className={selectClass}
               value={values.availability}
               onChange={(e) => set("availability", e.target.value)}
-              aria-invalid={Boolean(errors['availability'])}
+              aria-invalid={Boolean(errors["availability"])}
             >
               <option value="" disabled>
                 When are you usually free?
@@ -190,7 +196,7 @@ export function VolunteerForm() {
         <Field
           id="volunteer-skills"
           label="Skills or experience (optional)"
-          error={errors['skills']}
+          error={errors["skills"]}
           hint="Teaching, healthcare, trades, languages, design — anything you'd like to contribute."
         >
           <textarea
@@ -200,12 +206,15 @@ export function VolunteerForm() {
             className={inputClass}
             value={values.skills}
             onChange={(e) => set("skills", e.target.value)}
-            aria-invalid={Boolean(errors['skills'])}
+            aria-invalid={Boolean(errors["skills"])}
           />
         </Field>
 
         <div>
-          <label className="flex items-start gap-3 text-sm text-foreground" htmlFor="volunteer-consent">
+          <label
+            className="flex items-start gap-3 text-sm text-foreground"
+            htmlFor="volunteer-consent"
+          >
             <input
               id="volunteer-consent"
               name="consent"
@@ -213,15 +222,13 @@ export function VolunteerForm() {
               className="mt-0.5 h-4 w-4 shrink-0 rounded border-input accent-[var(--forest)]"
               checked={values.consent}
               onChange={(e) => set("consent", e.target.checked)}
-              aria-invalid={Boolean(errors['consent'])}
+              aria-invalid={Boolean(errors["consent"])}
             />
-            <span>
-              I'm happy for Aashray to contact me about volunteering opportunities.
-            </span>
+            <span>I'm happy for {site.name} to contact me about volunteering opportunities.</span>
           </label>
-          {errors['consent'] ? (
+          {errors["consent"] ? (
             <p role="alert" className="mt-1.5 text-xs font-medium text-destructive">
-              {errors['consent']}
+              {errors["consent"]}
             </p>
           ) : null}
         </div>

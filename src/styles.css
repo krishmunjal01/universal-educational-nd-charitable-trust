@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Aashray design system.
+ * Universal Educational & Charitable Trust design system.
  *
  * Brand palette (converted to oklch):
  *   forest green  #123D32 -> oklch(0.327 0.051 173.1)
@@ -148,7 +148,7 @@
 /* Scroll reveal — applied by <Reveal />, disabled under reduced motion */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(20px);
   transition:
     opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
@@ -160,11 +160,104 @@
   transform: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
+/* Page hero entrance animations on initial page load */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
     opacity: 1;
-    transform: none;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroImageSettle {
+  from {
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-enter {
+  animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-image-enter {
+  animation: heroImageSettle 1.4s ease-out forwards;
+}
+
+.hero-delay-1 {
+  animation-delay: 100ms;
+}
+
+.hero-delay-2 {
+  animation-delay: 200ms;
+}
+
+.hero-delay-3 {
+  animation-delay: 300ms;
+}
+
+/* Editorial card interactive elevation */
+.card-interactive {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, box-shadow;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card-interactive:hover {
+    transform: translateY(-4px);
+    border-color: oklch(0.639 0.038 123.6 / 60%);
+    box-shadow: 0 12px 30px -12px rgba(18, 61, 50, 0.1);
+  }
+}
+
+/* Animated navigation link underline */
+.nav-link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-olive);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav-link-underline:hover::after,
+  .nav-link-underline.is-active::after {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link-underline.is-active::after {
+    transform: scaleX(1);
     transition: none;
+  }
+}
+
+/* Directional arrow nudges on group hover */
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .group-hover-arrow-right {
+    transform: translateX(4px);
+  }
+  .group:hover .group-hover-arrow-up-right {
+    transform: translate(2px, -2px);
   }
 }
 
@@ -180,5 +273,47 @@
 @media (prefers-reduced-motion: no-preference) {
   .img-zoom:hover img {
     transform: scale(1.035);
+  }
+}
+
+/* Comprehensive reduced motion safeguards */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-image-enter {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .card-interactive {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .card-interactive:hover {
+    transform: none !important;
+  }
+
+  .img-zoom img {
+    transition: none !important;
+  }
+
+  .img-zoom:hover img {
+    transform: none !important;
+  }
+
+  .group:hover .group-hover-arrow-right,
+  .group:hover .group-hover-arrow-up-right {
+    transform: none !important;
   }
 }

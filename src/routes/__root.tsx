@@ -8,10 +8,10 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+import { site } from "@/content/site";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -39,16 +39,11 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-serif text-2xl font-medium text-foreground">
-          This page didn't load
-        </h1>
+        <h1 className="font-serif text-2xl font-medium text-foreground">This page didn't load</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
@@ -79,20 +74,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aashray — Small Actions. Real Change." },
+      { title: `${site.name} — ${site.tagline}` },
       {
         name: "description",
-        content:
-          "Aashray works towards a fairer, healthier, and more sustainable future through community-focused initiatives.",
+        content: `${site.name} works towards a fairer, healthier, and more sustainable future through community-focused initiatives.`,
       },
       { name: "theme-color", content: "#123D32" },
-      { name: "author", content: "Aashray" },
-      { property: "og:site_name", content: "Aashray" },
-      { property: "og:title", content: "Aashray — Small Actions. Real Change." },
+      { name: "author", content: site.name },
+      { property: "og:site_name", content: site.name },
+      { property: "og:title", content: `${site.name} — ${site.tagline}` },
       {
         property: "og:description",
-        content:
-          "Aashray works towards a fairer, healthier, and more sustainable future through community-focused initiatives.",
+        content: `${site.name} works towards a fairer, healthier, and more sustainable future through community-focused initiatives.`,
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

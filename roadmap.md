@@ -1,6 +1,6 @@
-# Aashray NGO Website — Roadmap
+# Universal Educational & Charitable Trust NGO Website — Roadmap
 
-- [x] Enable Lovable Cloud
+- [x] Enable Cloud Database
 - [x] Generate hero + banner photography
 - [x] Generate program photography
 - [ ] Generate story + team photography

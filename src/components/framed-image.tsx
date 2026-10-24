@@ -23,10 +23,10 @@ export function FramedImage({
   loading = "lazy",
 }: FramedImageProps) {
   return (
-    <div className={cn("relative", aspect, className)}>
+    <div className={cn("group relative", aspect, className)}>
       <div
         aria-hidden="true"
-        className="absolute inset-0 translate-x-3 translate-y-3 rounded-lg bg-beige"
+        className="absolute inset-0 translate-x-3 translate-y-3 rounded-lg bg-beige transition-transform duration-500 ease-out group-hover:translate-x-4 group-hover:translate-y-4"
       />
       <div className="img-zoom relative z-10 h-full w-full overflow-hidden rounded-lg">
         <img
@@ -34,7 +34,10 @@ export function FramedImage({
           alt={alt}
           loading={loading}
           decoding="async"
-          className={cn("h-full w-full object-cover", imgClassName)}
+          className={cn(
+            "h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]",
+            imgClassName,
+          )}
         />
       </div>
     </div>

@@ -10,6 +10,7 @@ import {
   selectClass,
 } from "@/components/forms/form-controls";
 import { submitPartnershipInquiry } from "@/lib/forms.functions";
+import { site } from "@/content/site";
 import { fieldErrors, partnershipSchema } from "@/lib/schemas";
 
 const typeOptions = [
@@ -72,8 +73,8 @@ export function PartnershipForm() {
       <div className="rounded-lg border border-olive/40 bg-card p-8 text-center" role="status">
         <p className="font-serif text-2xl font-medium text-forest">Inquiry received.</p>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-          Thank you for your interest in partnering with Aashray. We've logged your inquiry and will
-          respond by email once our partnerships contact details are confirmed.
+          Thank you for your interest in partnering with {site.name}. We've logged your inquiry and
+          will respond by email once our partnerships contact details are confirmed.
         </p>
       </div>
     );
@@ -83,7 +84,7 @@ export function PartnershipForm() {
     <Reveal>
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field id="partner-org" label="Organisation" required error={errors['organisation_name']}>
+          <Field id="partner-org" label="Organisation" required error={errors["organisation_name"]}>
             <input
               id="partner-org"
               name="organisation_name"
@@ -92,10 +93,10 @@ export function PartnershipForm() {
               className={inputClass}
               value={values.organisation_name}
               onChange={(e) => set("organisation_name", e.target.value)}
-              aria-invalid={Boolean(errors['organisation_name'])}
+              aria-invalid={Boolean(errors["organisation_name"])}
             />
           </Field>
-          <Field id="partner-name" label="Your name" required error={errors['contact_name']}>
+          <Field id="partner-name" label="Your name" required error={errors["contact_name"]}>
             <input
               id="partner-name"
               name="contact_name"
@@ -104,13 +105,13 @@ export function PartnershipForm() {
               className={inputClass}
               value={values.contact_name}
               onChange={(e) => set("contact_name", e.target.value)}
-              aria-invalid={Boolean(errors['contact_name'])}
+              aria-invalid={Boolean(errors["contact_name"])}
             />
           </Field>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field id="partner-email" label="Email" required error={errors['email']}>
+          <Field id="partner-email" label="Email" required error={errors["email"]}>
             <input
               id="partner-email"
               name="email"
@@ -119,17 +120,22 @@ export function PartnershipForm() {
               className={inputClass}
               value={values.email}
               onChange={(e) => set("email", e.target.value)}
-              aria-invalid={Boolean(errors['email'])}
+              aria-invalid={Boolean(errors["email"])}
             />
           </Field>
-          <Field id="partner-type" label="Partnership type" required error={errors['partnership_type']}>
+          <Field
+            id="partner-type"
+            label="Partnership type"
+            required
+            error={errors["partnership_type"]}
+          >
             <select
               id="partner-type"
               name="partnership_type"
               className={selectClass}
               value={values.partnership_type}
               onChange={(e) => set("partnership_type", e.target.value)}
-              aria-invalid={Boolean(errors['partnership_type'])}
+              aria-invalid={Boolean(errors["partnership_type"])}
             >
               <option value="" disabled>
                 How would you like to work together?
@@ -147,7 +153,7 @@ export function PartnershipForm() {
           id="partner-message"
           label="Your proposal"
           required
-          error={errors['message']}
+          error={errors["message"]}
           hint="Tell us briefly what you have in mind and how you'd like to contribute."
         >
           <textarea
@@ -157,7 +163,7 @@ export function PartnershipForm() {
             className={inputClass}
             value={values.message}
             onChange={(e) => set("message", e.target.value)}
-            aria-invalid={Boolean(errors['message'])}
+            aria-invalid={Boolean(errors["message"])}
           />
         </Field>
 

@@ -11,10 +11,10 @@ import { images, site, values } from "@/content/site";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Aashray — Small Actions. Real Change." },
+      { title: `About ${site.name} — ${site.tagline}` },
       {
         name: "description",
-        content: "Learn about Aashray's mission, vision, values, and community-centred approach.",
+        content: `Learn about ${site.name}'s mission, vision, values, and community-centred approach.`,
       },
     ],
   }),
@@ -28,8 +28,8 @@ function About() {
       <main>
         <PageHero
           image={images.heroAbout}
-          imageAlt="Illustrative placeholder photograph for Aashray's About page."
-          eyebrow="About Aashray"
+          imageAlt={`Illustrative placeholder photograph for ${site.name}'s About page.`}
+          eyebrow={`About ${site.name}`}
           title="Working together for a fairer future."
           description="We work with communities to build a fairer, healthier, and more sustainable future for everyone."
         />
@@ -96,10 +96,10 @@ function About() {
                 Our values
               </h2>
             </Reveal>
-            <div className="mt-10 grid border-y border-border md:mt-14 md:grid-cols-3">
+            <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-3">
               {values.map((value, index) => (
-                <Reveal key={value.title} delay={index * 0.06}>
-                  <article className="border-b border-border py-7 last:border-b-0 md:border-b-0 md:border-r md:px-8 md:py-9 md:first:pl-0 md:last:border-r-0 md:last:pr-0">
+                <Reveal key={value.title} delay={index * 0.09}>
+                  <article className="card-interactive rounded-xl border border-border bg-card p-7 shadow-xs">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
                       0{index + 1}
                     </p>
@@ -156,7 +156,7 @@ function About() {
         <ClosingCta
           eyebrow="Take the next step"
           title="Be part of what comes next."
-          description="Explore Aashray's work or find a way to get involved."
+          description={`Explore ${site.name}'s work or find a way to get involved.`}
           primaryCta={{ label: "Explore our work", to: "/work" }}
           secondaryCta={{ label: "Get involved", to: "/get-involved" }}
         />

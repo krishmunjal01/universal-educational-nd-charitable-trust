@@ -12,11 +12,10 @@ import { images, programs, site } from "@/content/site";
 export const Route = createFileRoute("/impact")({
   head: () => ({
     meta: [
-      { title: "Our Impact — Aashray" },
+      { title: `Our Impact — ${site.name}` },
       {
         name: "description",
-        content:
-          "Explore how Aashray thinks about community-led, sustainable change and responsible progress.",
+        content: `Explore how ${site.name} thinks about community-led, sustainable change and responsible progress.`,
       },
     ],
   }),
@@ -30,7 +29,7 @@ function Impact() {
       <main>
         <PageHero
           image={images.heroImpact}
-          imageAlt="AI-generated illustrative placeholder photograph; not a depiction of actual Aashray beneficiaries, programmes, or locations."
+          imageAlt={`AI-generated illustrative placeholder photograph; not a depiction of actual ${site.name} beneficiaries, programmes, or locations.`}
           eyebrow="Our impact"
           title="Progress deserves to be understood with care."
           description="Lasting change is about more than a number. It begins with people, grows through participation, and asks us to keep learning."
@@ -92,12 +91,12 @@ function Impact() {
 
             <div className="mt-12 border-y border-border md:mt-16">
               {programs.map((program, index) => (
-                <Reveal key={program.id} delay={index * 0.05}>
-                  <article className="grid gap-3 border-b border-border py-7 last:border-b-0 md:grid-cols-[88px_0.8fr_1.2fr] md:gap-8 md:py-9">
+                <Reveal key={program.id} delay={index * 0.08}>
+                  <article className="group grid gap-3 border-b border-border py-7 transition-colors duration-300 hover:bg-beige/35 last:border-b-0 md:grid-cols-[88px_0.8fr_1.2fr] md:gap-8 md:px-4 md:py-9">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
                       0{index + 1}
                     </p>
-                    <h3 className="font-serif text-3xl font-medium leading-tight text-forest md:text-4xl">
+                    <h3 className="font-serif text-3xl font-medium leading-tight text-forest transition-colors duration-200 group-hover:text-forest-deep md:text-4xl">
                       {program.title}
                     </h3>
                     <div>
@@ -114,6 +113,10 @@ function Impact() {
             </div>
             <ButtonLink to="/work" variant="outline-dark" className="mt-8">
               Explore our programmes
+              <ArrowUpRight
+                aria-hidden="true"
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </ButtonLink>
           </div>
         </section>
@@ -142,26 +145,34 @@ function Impact() {
                 claim that an audited process or verified results are currently in place.
               </p>
               <dl className="mt-9 divide-y divide-ivory/15 border-y border-ivory/15">
-                <div className="grid gap-2 py-4 sm:grid-cols-[180px_1fr] sm:gap-6">
-                  <dt className="font-serif text-2xl text-ivory">Activities</dt>
+                <div className="group grid gap-2 py-4 transition-colors duration-200 hover:bg-ivory/5 sm:grid-cols-[180px_1fr] sm:gap-6 sm:px-3">
+                  <dt className="font-serif text-2xl text-ivory transition-transform duration-200 group-hover:translate-x-1">
+                    Activities
+                  </dt>
                   <dd className="text-sm leading-6 text-ivory/70">
                     Record what was planned and delivered.
                   </dd>
                 </div>
-                <div className="grid gap-2 py-4 sm:grid-cols-[180px_1fr] sm:gap-6">
-                  <dt className="font-serif text-2xl text-ivory">Participation</dt>
+                <div className="group grid gap-2 py-4 transition-colors duration-200 hover:bg-ivory/5 sm:grid-cols-[180px_1fr] sm:gap-6 sm:px-3">
+                  <dt className="font-serif text-2xl text-ivory transition-transform duration-200 group-hover:translate-x-1">
+                    Participation
+                  </dt>
                   <dd className="text-sm leading-6 text-ivory/70">
                     Understand who took part and how local voices shaped the work.
                   </dd>
                 </div>
-                <div className="grid gap-2 py-4 sm:grid-cols-[180px_1fr] sm:gap-6">
-                  <dt className="font-serif text-2xl text-ivory">Outcomes</dt>
+                <div className="group grid gap-2 py-4 transition-colors duration-200 hover:bg-ivory/5 sm:grid-cols-[180px_1fr] sm:gap-6 sm:px-3">
+                  <dt className="font-serif text-2xl text-ivory transition-transform duration-200 group-hover:translate-x-1">
+                    Outcomes
+                  </dt>
                   <dd className="text-sm leading-6 text-ivory/70">
                     Look for meaningful changes over time and interpret them with care.
                   </dd>
                 </div>
-                <div className="grid gap-2 py-4 sm:grid-cols-[180px_1fr] sm:gap-6">
-                  <dt className="font-serif text-2xl text-ivory">Feedback</dt>
+                <div className="group grid gap-2 py-4 transition-colors duration-200 hover:bg-ivory/5 sm:grid-cols-[180px_1fr] sm:gap-6 sm:px-3">
+                  <dt className="font-serif text-2xl text-ivory transition-transform duration-200 group-hover:translate-x-1">
+                    Feedback
+                  </dt>
                   <dd className="text-sm leading-6 text-ivory/70">
                     Make space for community perspectives to inform what happens next.
                   </dd>
@@ -190,7 +201,7 @@ function Impact() {
               </div>
               <p className="max-w-md text-sm leading-7 text-muted-foreground">
                 The photographs below are AI-generated placeholders. They are illustrative only and
-                do not depict actual Aashray beneficiaries, staff, programmes, or locations.
+                do not depict actual {site.name} beneficiaries, staff, programmes, or locations.
               </p>
             </Reveal>
 
@@ -199,7 +210,7 @@ function Impact() {
                 <figure>
                   <FramedImage
                     src={images.closingImpact}
-                    alt="AI-generated illustrative placeholder image representing community participation; it does not depict an actual Aashray programme or community."
+                    alt={`AI-generated illustrative placeholder image representing community participation; it does not depict an actual ${site.name} programme or community.`}
                     aspect="aspect-[5/4]"
                   />
                   <figcaption className="mt-5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
@@ -211,7 +222,7 @@ function Impact() {
                 <figure>
                   <FramedImage
                     src={images.heroVolunteers}
-                    alt="AI-generated illustrative placeholder image suggesting people working together; it does not depict actual Aashray staff, volunteers, or activity."
+                    alt={`AI-generated illustrative placeholder image suggesting people working together; it does not depict actual ${site.name} staff, volunteers, or activity.`}
                     aspect="aspect-[4/3]"
                   />
                   <figcaption className="mt-5 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">

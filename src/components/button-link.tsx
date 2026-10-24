@@ -5,21 +5,23 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 /**
- * Editorial button styles for the Aashray design system.
+ * Editorial button styles for the Universal Educational & Charitable Trust design system.
  * - `solid`        forest green fill (primary actions on light sections)
  * - `solid-light`  ivory fill (primary actions on deep-green sections)
  * - `outline-dark` forest outline (secondary actions on light sections)
  * - `outline-light` ivory outline (secondary actions on deep-green sections)
  */
 export const buttonLinkStyles = cva(
-  "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2",
+  "group inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2",
   {
     variants: {
       variant: {
         solid: "bg-primary text-primary-foreground hover:bg-forest-deep",
         "solid-light": "bg-ivory text-forest hover:bg-beige",
-        "outline-dark": "border border-forest/40 bg-transparent text-forest hover:bg-forest hover:text-ivory",
-        "outline-light": "border border-ivory/50 bg-transparent text-ivory hover:bg-ivory hover:text-forest-deep",
+        "outline-dark":
+          "border border-forest/40 bg-transparent text-forest hover:bg-forest hover:text-ivory",
+        "outline-light":
+          "border border-ivory/50 bg-transparent text-ivory hover:bg-ivory hover:text-forest-deep",
       },
       size: {
         md: "px-6 py-3 text-sm",

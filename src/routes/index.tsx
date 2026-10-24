@@ -23,50 +23,52 @@ function Index() {
       <main>
         <section className="overflow-hidden bg-ivory">
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-16 pt-12 md:grid-cols-[1fr_0.9fr] md:gap-14 md:px-10 md:pb-24 md:pt-20">
-            <Reveal className="order-2 md:order-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-forest">
-                Aashray
+            <div className="order-2 md:order-1">
+              <p className="hero-enter text-xs font-semibold uppercase tracking-[0.2em] text-forest">
+                {site.name}
               </p>
-              <h1 className="mt-5 font-serif text-6xl font-medium leading-[0.9] text-forest md:text-7xl lg:text-8xl">
+              <h1 className="hero-enter hero-delay-1 mt-5 font-serif text-6xl font-medium leading-[0.9] text-forest md:text-7xl lg:text-8xl">
                 {site.hero.headline.map((line) => (
                   <span key={line} className="block">
                     {line}
                   </span>
                 ))}
               </h1>
-              <p className="mt-7 max-w-lg text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
+              <p className="hero-enter hero-delay-2 mt-7 max-w-lg text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
                 {site.hero.support}
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="hero-enter hero-delay-3 mt-8 flex flex-wrap gap-3">
                 <ButtonLink to={site.hero.primaryCta.to} size="lg">
                   {site.hero.primaryCta.label}
-                  <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                  <ArrowUpRight
+                    aria-hidden="true"
+                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
                 </ButtonLink>
-                <ButtonLink
-                  to={site.hero.secondaryCta.to}
-                  variant="outline-dark"
-                  size="lg"
-                >
+                <ButtonLink to={site.hero.secondaryCta.to} variant="outline-dark" size="lg">
                   {site.hero.secondaryCta.label}
                 </ButtonLink>
               </div>
               <a
                 href="#introduction"
-                className="mt-12 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-forest focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="group hero-enter hero-delay-3 mt-12 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-forest focus-visible:outline-2 focus-visible:outline-offset-4"
               >
-                Discover Aashray
-                <ArrowDownRight aria-hidden="true" className="h-4 w-4" />
+                Discover our work
+                <ArrowDownRight
+                  aria-hidden="true"
+                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5"
+                />
               </a>
-            </Reveal>
+            </div>
 
-            <Reveal className="order-1 md:order-2" delay={0.12}>
+            <div className="order-1 md:order-2">
               <figure className="mx-auto max-w-lg md:ml-auto">
                 <FramedImage
                   src={images.heroChild}
                   alt=""
                   aspect="aspect-[4/4.5]"
                   loading="eager"
-                  className="mr-3 mb-3"
+                  className="hero-image-enter mr-3 mb-3"
                   imgClassName="object-[center_40%]"
                 />
                 <figcaption className="mt-5 flex items-center justify-between border-t border-border pt-3 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
@@ -74,7 +76,7 @@ function Index() {
                   <span aria-hidden="true">01 / 04</span>
                 </figcaption>
               </figure>
-            </Reveal>
+            </div>
           </div>
         </section>
 
@@ -188,11 +190,7 @@ function Index() {
                 We are not publishing figures here until they have been verified. Our focus is on
                 clear, accountable reporting that reflects the work accurately.
               </p>
-              <ButtonLink
-                to="/impact"
-                variant="outline-light"
-                className="mt-8"
-              >
+              <ButtonLink to="/impact" variant="outline-light" className="mt-8">
                 Explore our approach to impact
                 <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
               </ButtonLink>
@@ -210,10 +208,10 @@ function Index() {
                 Principles before promises.
               </h2>
             </Reveal>
-            <div className="mt-10 grid border-y border-border md:mt-14 md:grid-cols-3">
+            <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-3">
               {values.map((value, index) => (
-                <Reveal key={value.title} delay={index * 0.06}>
-                  <article className="border-b border-border py-7 md:border-b-0 md:border-r md:px-8 md:py-9 md:first:pl-0 md:last:border-r-0 md:last:pr-0">
+                <Reveal key={value.title} delay={index * 0.09}>
+                  <article className="card-interactive rounded-xl border border-border bg-card p-7 shadow-xs">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
                       0{index + 1}
                     </p>
@@ -245,10 +243,10 @@ function Index() {
                 Choose a path that feels right for you.
               </p>
             </Reveal>
-            <div className="mt-10 grid gap-0 border-y border-border md:mt-14 md:grid-cols-3">
+            <div className="mt-10 grid gap-6 md:mt-14 md:grid-cols-3">
               {helpPaths.map((path, index) => (
-                <Reveal key={path.title} delay={index * 0.06}>
-                  <article className="flex h-full flex-col border-b border-border py-7 md:border-b-0 md:border-r md:px-7 md:py-8 md:first:pl-0 md:last:border-r-0 md:last:pr-0">
+                <Reveal key={path.title} delay={index * 0.09}>
+                  <article className="card-interactive flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-xs">
                     <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
                       0{index + 1}
                     </span>
@@ -258,13 +256,14 @@ function Index() {
                     <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">
                       {path.description}
                     </p>
-                    <ButtonLink
-                      to={path.to}
-                      variant="outline-dark"
-                      className="mt-6 self-start"
-                    >
-                      {path.title === "Donate" ? "Make a contribution" : `Explore ${path.title.toLowerCase()}`}
-                      <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                    <ButtonLink to={path.to} variant="outline-dark" className="mt-6 self-start">
+                      {path.title === "Donate"
+                        ? "Make a contribution"
+                        : `Explore ${path.title.toLowerCase()}`}
+                      <ArrowUpRight
+                        aria-hidden="true"
+                        className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
                     </ButtonLink>
                   </article>
                 </Reveal>
@@ -275,7 +274,7 @@ function Index() {
 
         <ClosingCta
           eyebrow="Small actions. Real change."
-          title="Take the next step with Aashray."
+          title={`Take the next step with ${site.name}.`}
           description={site.hero.support}
           primaryCta={{ label: "Get Involved", to: "/get-involved" }}
           secondaryCta={site.hero.primaryCta}

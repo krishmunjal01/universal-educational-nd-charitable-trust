@@ -36,11 +36,13 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
     return () => observer.disconnect();
   }, []);
 
+  const delayValue = delay > 10 ? `${delay}ms` : `${delay}s`;
+
   return (
     <div
       ref={ref}
       className={cn("reveal", visible && "reveal-visible", className)}
-      style={delay ? { transitionDelay: `${delay}s` } : undefined}
+      style={delay ? { transitionDelay: delayValue } : undefined}
     >
       {children}
     </div>

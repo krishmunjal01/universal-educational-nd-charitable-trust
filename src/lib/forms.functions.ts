@@ -55,15 +55,13 @@ export const submitVolunteerApplication = createServerFn({ method: "POST" })
 export const submitPartnershipInquiry = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => partnershipSchema.parse(data))
   .handler(async ({ data }) => {
-    const { error } = await publishableClient()
-      .from("partnership_inquiries")
-      .insert({
-        organisation_name: data.organisation_name,
-        contact_name: data.contact_name,
-        email: data.email,
-        partnership_type: data.partnership_type,
-        message: data.message,
-      });
+    const { error } = await publishableClient().from("partnership_inquiries").insert({
+      organisation_name: data.organisation_name,
+      contact_name: data.contact_name,
+      email: data.email,
+      partnership_type: data.partnership_type,
+      message: data.message,
+    });
     if (error) {
       console.error("partnership_inquiries insert failed:", error.message);
       return { ok: false as const, error: GENERIC_ERROR };
@@ -74,13 +72,15 @@ export const submitPartnershipInquiry = createServerFn({ method: "POST" })
 export const submitContactMessage = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => contactSchema.parse(data))
   .handler(async ({ data }) => {
-    const { error } = await publishableClient().from("contact_messages").insert({
-      name: data.name,
-      email: data.email,
-      phone: data.phone || null,
-      subject: data.subject || null,
-      message: data.message,
-    });
+    const { error } = await publishableClient()
+      .from("contact_messages")
+      .insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || null,
+        subject: data.subject || null,
+        message: data.message,
+      });
     if (error) {
       console.error("contact_messages insert failed:", error.message);
       return { ok: false as const, error: GENERIC_ERROR };

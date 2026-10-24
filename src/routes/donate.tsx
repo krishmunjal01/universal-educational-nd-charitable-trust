@@ -6,16 +6,22 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { donationAmounts, donationFrequencies, formatInr, images, programs } from "@/content/site";
+import {
+  donationAmounts,
+  donationFrequencies,
+  formatInr,
+  images,
+  programs,
+  site,
+} from "@/content/site";
 
 export const Route = createFileRoute("/donate")({
   head: () => ({
     meta: [
-      { title: "Donate — Aashray" },
+      { title: `Donate — ${site.name}` },
       {
         name: "description",
-        content:
-          "Learn about Aashray's community-focused work and explore a demonstration donation selection.",
+        content: `Learn about ${site.name}'s community-focused work and explore a demonstration donation selection.`,
       },
     ],
   }),
@@ -49,8 +55,8 @@ function Donate() {
       <main>
         <PageHero
           image={images.heroDonate}
-          imageAlt="AI-generated illustrative placeholder photograph; it does not depict actual Aashray beneficiaries, programmes, or locations."
-          eyebrow="Support Aashray"
+          imageAlt={`AI-generated illustrative placeholder photograph; it does not depict actual ${site.name} beneficiaries, programmes, or locations.`}
+          eyebrow={`Support ${site.name}`}
           title="Make Change Possible."
           description="Your support can help sustain community-focused work towards a fairer, healthier, and more sustainable future."
         />
@@ -76,7 +82,7 @@ function Donate() {
                 Sustained support can make room for work that grows with community priorities.
               </h2>
               <p className="mt-5 max-w-3xl text-sm leading-7 text-muted-foreground md:text-base">
-                Aashray's programme areas include education, sustainable livelihoods, health and
+                {site.name}'s programme areas include education, sustainable livelihoods, health and
                 wellbeing, and the environment. Continued community-focused work takes time,
                 listening, and care for what people value and need. Support can help sustain that
                 work, without any single contribution guaranteeing a particular outcome.
@@ -101,19 +107,21 @@ function Donate() {
                 Four connected programme areas.
               </h2>
             </Reveal>
-            <div className="mt-9 grid border-y border-border sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {programs.map((program, index) => (
-                <Reveal key={program.id} delay={index * 0.05}>
-                  <article className="border-b border-border py-6 last:border-b-0 sm:px-6 sm:first:pl-0 sm:last:pr-0 lg:border-b-0 lg:border-r lg:first:pl-0 lg:last:border-r-0">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
-                      0{index + 1}
-                    </p>
-                    <h3 className="mt-3 font-serif text-2xl font-medium text-forest">
-                      {program.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      {program.shortDescription}
-                    </p>
+                <Reveal key={program.id} delay={index * 0.09}>
+                  <article className="card-interactive flex h-full flex-col justify-between rounded-xl border border-border bg-card p-6 shadow-xs">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
+                        0{index + 1}
+                      </p>
+                      <h3 className="mt-3 font-serif text-2xl font-medium text-forest">
+                        {program.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                        {program.shortDescription}
+                      </p>
+                    </div>
                   </article>
                 </Reveal>
               ))}
@@ -154,9 +162,9 @@ function Donate() {
                         <label
                           key={optionAmount}
                           htmlFor={id}
-                          className={`flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-md border px-3 text-sm font-semibold transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring ${
+                          className={`flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-md border px-3 text-sm font-semibold transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 hover:shadow-xs focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring ${
                             selected
-                              ? "border-forest bg-forest text-ivory"
+                              ? "border-forest bg-forest text-ivory shadow-xs"
                               : "border-border bg-ivory text-forest hover:border-forest/50"
                           }`}
                         >
@@ -175,9 +183,9 @@ function Donate() {
                     })}
                     <label
                       htmlFor="donation-amount-custom"
-                      className={`flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-md border px-3 text-sm font-semibold transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring ${
+                      className={`flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-md border px-3 text-sm font-semibold transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 hover:shadow-xs focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring ${
                         selectedAmount === "custom"
-                          ? "border-forest bg-forest text-ivory"
+                          ? "border-forest bg-forest text-ivory shadow-xs"
                           : "border-border bg-ivory text-forest hover:border-forest/50"
                       }`}
                     >
@@ -255,9 +263,9 @@ function Donate() {
                         <label
                           key={option.id}
                           htmlFor={id}
-                          className={`flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-md border px-5 text-sm font-medium transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring ${
+                          className={`flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-md border px-5 text-sm font-medium transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 hover:shadow-xs focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ring ${
                             selected
-                              ? "border-forest bg-forest text-ivory"
+                              ? "border-forest bg-forest text-ivory shadow-xs"
                               : "border-border bg-ivory text-forest hover:border-forest/50"
                           }`}
                         >
@@ -339,7 +347,7 @@ function Donate() {
               <figure>
                 <img
                   src={images.closingImpact}
-                  alt="AI-generated illustrative placeholder photograph; it does not depict an actual Aashray community, programme, or outcome."
+                  alt={`AI-generated illustrative placeholder photograph; it does not depict an actual ${site.name} community, programme, or outcome.`}
                   loading="lazy"
                   decoding="async"
                   className="aspect-[5/4] w-full rounded-lg object-cover"

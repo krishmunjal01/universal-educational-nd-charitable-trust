@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+
 import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
@@ -65,6 +67,7 @@ export function ClosingCta({
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <ButtonLink to={primaryCta.to} variant="solid-light" size="lg">
               {primaryCta.label}
+              <ArrowRight className="size-4" />
             </ButtonLink>
             {secondaryCta ? (
               <ButtonLink to={secondaryCta.to} variant="outline-light" size="lg">

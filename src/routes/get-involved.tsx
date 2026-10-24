@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
 import { ButtonLink } from "@/components/button-link";
@@ -10,17 +11,17 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { helpPaths, images } from "@/content/site";
+import { helpPaths, images, site } from "@/content/site";
 import { submitVolunteerApplication } from "@/lib/forms.functions";
 import { fieldErrors, volunteerSchema } from "@/lib/schemas";
 
 export const Route = createFileRoute("/get-involved")({
   head: () => ({
     meta: [
-      { title: "Get Involved — Aashray" },
+      { title: `Get Involved — ${site.name}` },
       {
         name: "description",
-        content: "Contribute your time, skills, or resources to Aashray's community-focused work.",
+        content: `Contribute your time, skills, or resources to ${site.name}'s community-focused work.`,
       },
     ],
   }),
@@ -56,7 +57,7 @@ function GetInvolved() {
       <main>
         <PageHero
           image={images.heroVolunteers}
-          imageAlt="AI-generated illustrative placeholder photograph suggesting people working together; it does not depict actual Aashray volunteers or activities."
+          imageAlt={`AI-generated illustrative placeholder photograph suggesting people working together; it does not depict actual ${site.name} volunteers or activities.`}
           eyebrow="Get involved"
           title="Be Part of the Change."
           description="Contribute your time, skills, or resources to work shaped with communities."
@@ -88,56 +89,68 @@ function GetInvolved() {
             </Reveal>
 
             <div className="mt-12 grid gap-10 border-y border-border py-9 md:mt-16 md:grid-cols-[1.15fr_0.85fr] md:gap-16 md:py-12">
-              <Reveal>
-                <article className="flex h-full flex-col">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
-                    01 / Give your time
-                  </p>
-                  <h3 className="mt-4 font-serif text-4xl font-medium text-forest md:text-5xl">
-                    Volunteer
-                  </h3>
-                  <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
-                    {volunteerPath.description} Share your interests through the
-                    expression-of-interest form below.
-                  </p>
+              <Reveal delay={0}>
+                <article className="card-interactive flex h-full flex-col justify-between rounded-xl border border-border bg-card p-7 shadow-xs">
+                  <div>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
+                      01 / Give your time
+                    </p>
+                    <h3 className="mt-4 font-serif text-4xl font-medium text-forest md:text-5xl">
+                      Volunteer
+                    </h3>
+                    <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
+                      {volunteerPath.description} Share your interests through the
+                      expression-of-interest form below.
+                    </p>
+                  </div>
                   <a
                     href="#volunteer-interest"
-                    className="mt-7 inline-flex self-start items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors duration-200 hover:bg-forest-deep focus-visible:outline-2 focus-visible:outline-offset-2"
+                    className="group mt-7 inline-flex self-start items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 hover:bg-forest-deep focus-visible:outline-2 focus-visible:outline-offset-2"
                   >
                     Share your interest
+                    <ArrowDown className="size-4 transition-transform duration-200 group-hover:translate-y-0.5" />
                   </a>
                 </article>
               </Reveal>
 
-              <div className="divide-y divide-border border-t border-border md:border-t-0">
-                <Reveal delay={0.06}>
-                  <article className="py-7 md:pt-0">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
-                      02 / Work together
-                    </p>
-                    <h3 className="mt-3 font-serif text-3xl font-medium text-forest md:text-4xl">
-                      Partner with Us
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                      {partnerPath.description} Institutional collaborations and skills-based
-                      support can help bring complementary perspectives to community-focused work.
-                    </p>
+              <div className="grid gap-6">
+                <Reveal delay={0.09}>
+                  <article className="card-interactive flex h-full flex-col justify-between rounded-xl border border-border bg-card p-7 shadow-xs">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
+                        02 / Work together
+                      </p>
+                      <h3 className="mt-3 font-serif text-3xl font-medium text-forest md:text-4xl">
+                        Partner with Us
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                        {partnerPath.description} Institutional collaborations and skills-based
+                        support can help bring complementary perspectives to community-focused work.
+                      </p>
+                    </div>
                   </article>
                 </Reveal>
-                <Reveal delay={0.12}>
-                  <article className="py-7 pb-0">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
-                      03 / Support the work
-                    </p>
-                    <h3 className="mt-3 font-serif text-3xl font-medium text-forest md:text-4xl">
-                      {donatePath.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                      {donatePath.description} A contribution can support programmes and community
-                      initiatives.
-                    </p>
-                    <ButtonLink to={donatePath.to} variant="outline-dark" className="mt-5">
+                <Reveal delay={0.18}>
+                  <article className="card-interactive flex h-full flex-col justify-between rounded-xl border border-border bg-card p-7 shadow-xs">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-olive">
+                        03 / Support the work
+                      </p>
+                      <h3 className="mt-3 font-serif text-3xl font-medium text-forest md:text-4xl">
+                        {donatePath.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                        {donatePath.description} A contribution can support programmes and community
+                        initiatives.
+                      </p>
+                    </div>
+                    <ButtonLink
+                      to={donatePath.to}
+                      variant="outline-dark"
+                      className="mt-5 self-start"
+                    >
                       Visit the Donate page
+                      <ArrowRight className="size-4" />
                     </ButtonLink>
                   </article>
                 </Reveal>
@@ -156,7 +169,7 @@ function GetInvolved() {
               <figure>
                 <FramedImage
                   src={images.heroChild}
-                  alt="AI-generated illustrative placeholder image; it does not depict an actual Aashray participant, volunteer, programme, or location."
+                  alt={`AI-generated illustrative placeholder image; it does not depict an actual ${site.name} participant, volunteer, programme, or location.`}
                   aspect="aspect-[4/5]"
                   className="mr-3 mb-3"
                 />
@@ -175,8 +188,8 @@ function GetInvolved() {
               </h2>
               <p className="mt-5 text-sm leading-7 text-muted-foreground">
                 Sharing this form is an expression of interest, not confirmation of acceptance.
-                Information is submitted to Aashray for consideration; submitting does not guarantee
-                a response or placement.
+                Information is submitted to {site.name} for consideration; submitting does not
+                guarantee a response or placement.
               </p>
             </Reveal>
             <Reveal delay={0.08}>
@@ -404,8 +417,8 @@ function VolunteerInterestForm() {
         pendingLabel="Submitting…"
       />
       <p className="text-xs leading-5 text-muted-foreground">
-        Your information is not stored in this browser. Submission uses Aashray's existing volunteer
-        application service.
+        Your information is not stored in this browser. Submission uses {site.name}'s existing
+        volunteer application service.
       </p>
     </form>
   );

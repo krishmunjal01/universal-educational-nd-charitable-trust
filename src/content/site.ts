@@ -1,5 +1,5 @@
 /**
- * Centralised, editable content for the Aashray website.
+ * Centralised, editable content for the Universal Educational & Charitable Trust website.
  *
  * ─────────────────────────────────────────────────────────────────────────
  * ALL PHOTOGRAPHY IN THIS PROJECT IS AI-GENERATED PLACEHOLDER IMAGERY.
@@ -46,7 +46,7 @@ export const images = {
 };
 
 export const site = {
-  name: "Aashray",
+  name: "Universal Educational & Charitable Trust",
   tagline: "Small Actions. Real Change.",
   mission:
     "Working together to build a fairer, healthier, and more sustainable future for everyone.",
@@ -134,8 +134,7 @@ export const programs: Program[] = [
     longDescription:
       "We work with communities to build skills, sustainable income opportunities, and long-term economic resilience — from vocational training and self-help groups to support for local artisans and farmers reaching better markets.",
     image: programLivelihoods,
-    imageAlt:
-      "Women artisans weaving traditional bamboo crafts at a rural workshop.",
+    imageAlt: "Women artisans weaving traditional bamboo crafts at a rural workshop.",
     keyActivities: [
       "Skills and vocational training",
       "Support for self-help and producer groups",
@@ -296,8 +295,7 @@ export const stories: Story[] = [
     quote: "[Placeholder quote — to be replaced with an approved, consented story.]",
     attribution: "[Attribution placeholder]",
     image: story3,
-    imageAlt:
-      "A volunteer and children planting a sapling together at a community orchard.",
+    imageAlt: "A volunteer and children planting a sapling together at a community orchard.",
     isPlaceholder: true,
   },
 ];

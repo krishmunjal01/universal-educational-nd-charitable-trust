@@ -9,16 +9,16 @@ import { z } from "zod";
 export const volunteerSchema = z.object({
   full_name: z.string().trim().min(2, "Please enter your full name.").max(120, "Name is too long."),
   email: z.string().trim().toLowerCase().email("Please enter a valid email address.").max(200),
-  phone: z
-    .string()
-    .trim()
-    .max(20, "Phone number is too long.")
-    .optional()
-    .or(z.literal("")),
+  phone: z.string().trim().max(20, "Phone number is too long.").optional().or(z.literal("")),
   interest: z.enum(["education", "livelihoods", "health", "environment", "general"], {
     errorMap: () => ({ message: "Please choose an area of interest." }),
   }),
-  skills: z.string().trim().max(500, "Please keep this under 500 characters.").optional().or(z.literal("")),
+  skills: z
+    .string()
+    .trim()
+    .max(500, "Please keep this under 500 characters.")
+    .optional()
+    .or(z.literal("")),
   availability: z.enum(["weekdays", "weekends", "evenings", "flexible"], {
     errorMap: () => ({ message: "Please choose your availability." }),
   }),
@@ -29,11 +29,7 @@ export const volunteerSchema = z.object({
 export type VolunteerInput = z.infer<typeof volunteerSchema>;
 
 export const partnershipSchema = z.object({
-  organisation_name: z
-    .string()
-    .trim()
-    .min(2, "Please enter your organisation's name.")
-    .max(160),
+  organisation_name: z.string().trim().min(2, "Please enter your organisation's name.").max(160),
   contact_name: z.string().trim().min(2, "Please enter your name.").max(120),
   email: z.string().trim().toLowerCase().email("Please enter a valid email address.").max(200),
   partnership_type: z.enum(["corporate", "foundation", "ngo", "individual", "other"], {

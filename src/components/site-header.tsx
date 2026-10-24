@@ -10,16 +10,21 @@ function Wordmark({ onDark = false }: { onDark?: boolean }) {
   return (
     <Link
       to="/"
-      className="flex shrink-0 items-center gap-2.5"
+      className="flex min-w-0 items-center gap-2 sm:gap-2.5"
       aria-label={`${site.name} — home`}
     >
       <span
         aria-hidden="true"
-        className={cn("h-2.5 w-2.5 rounded-full", onDark ? "bg-olive" : "bg-forest")}
+        className={cn(
+          "h-2 w-2 shrink-0 rounded-full sm:h-2.5 sm:w-2.5",
+          onDark ? "bg-olive" : "bg-forest",
+        )}
       />
       <span
         className={cn(
-          "font-serif text-2xl font-semibold tracking-wide",
+          "font-serif font-semibold leading-tight tracking-normal",
+          "text-sm sm:text-base md:text-[15px] lg:text-lg xl:text-xl",
+          "max-w-[210px] sm:max-w-xs md:max-w-[260px] lg:max-w-md xl:max-w-none",
           onDark ? "text-ivory" : "text-forest",
         )}
       >
@@ -55,30 +60,31 @@ export function SiteHeader() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
+    const toggleEl = toggleRef.current;
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = previousOverflow;
-      toggleRef.current?.focus();
+      toggleEl?.focus();
     };
   }, [open]);
 
   const navLinkClasses = (isActive: boolean) =>
     cn(
-      "text-sm font-medium transition-colors hover:text-forest",
-      isActive ? "text-forest underline decoration-olive decoration-2 underline-offset-8" : "text-muted-foreground",
+      "nav-link-underline text-sm font-medium transition-colors hover:text-forest",
+      isActive ? "text-forest is-active" : "text-muted-foreground",
     );
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/85">
-      <div className="mx-auto grid h-16 max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 md:h-20 md:px-10">
+      <div className="mx-auto grid h-16 max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-6 md:h-20 md:gap-4 md:px-10">
         <div className="flex min-w-0 items-center gap-3">
           <Wordmark />
-          <span className="hidden truncate text-xs text-muted-foreground lg:inline">
+          <span className="hidden truncate text-xs text-muted-foreground xl:inline">
             {site.tagline}
           </span>
         </div>
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-4 md:flex lg:gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -115,7 +121,7 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="fixed inset-0 z-50 flex flex-col bg-forest-deep md:hidden"
+          className="fixed inset-0 z-50 flex flex-col bg-forest-deep transition-opacity duration-200 animate-in fade-in md:hidden"
         >
           <div className="grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6">
             <Wordmark onDark />
@@ -146,9 +152,7 @@ export function SiteHeader() {
               </ButtonLink>
             </div>
           </nav>
-          <p className="px-6 pb-8 text-xs text-ivory/60">
-            {site.tagline}
-          </p>
+          <p className="px-6 pb-8 text-xs text-ivory/60">{site.tagline}</p>
         </div>
       ) : null}
     </header>

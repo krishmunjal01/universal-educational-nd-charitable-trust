@@ -25,13 +25,19 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2.5">
             {navLinks.map((link) => (
               <li key={link.to}>
-                <Link to={link.to} className="text-sm text-ivory/85 transition-colors hover:text-olive">
+                <Link
+                  to={link.to}
+                  className="text-sm text-ivory/85 transition-colors hover:text-olive"
+                >
                   {link.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link to="/donate" className="text-sm text-ivory/85 transition-colors hover:text-olive">
+              <Link
+                to="/donate"
+                className="text-sm text-ivory/85 transition-colors hover:text-olive"
+              >
                 Donate
               </Link>
             </li>
@@ -39,11 +45,16 @@ export function SiteFooter() {
         </nav>
 
         <nav aria-label="Footer — programmes">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-ivory/60">Programmes</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-ivory/60">
+            Programmes
+          </p>
           <ul className="mt-4 space-y-2.5">
             {programs.map((program) => (
               <li key={program.id}>
-                <Link to="/work" className="text-sm text-ivory/85 transition-colors hover:text-olive">
+                <Link
+                  to="/work"
+                  className="text-sm text-ivory/85 transition-colors hover:text-olive"
+                >
                   {program.title}
                 </Link>
               </li>
@@ -76,7 +87,9 @@ export function SiteFooter() {
 
       <div className="border-t border-ivory/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-xs text-ivory/55 md:flex-row md:items-center md:justify-between md:px-10">
-          <p>© {year} {site.name}. All rights reserved.</p>
+          <p>
+            © {year} {site.name}. All rights reserved.
+          </p>
           <p>
             Statistics, stories, and contact details marked as placeholders are pending confirmation
             by the organisation.
