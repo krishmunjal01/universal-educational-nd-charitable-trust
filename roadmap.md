@@ -1,0 +1,21 @@
+# Aashray NGO Website — Roadmap
+
+- [x] Enable Lovable Cloud
+- [x] Generate hero + banner photography
+- [x] Generate program photography
+- [ ] Generate story + team photography
+- [ ] Design system (styles.css tokens, fonts in __root)
+- [ ] Centralized content data (src/content/site.ts)
+- [ ] Shared components (header, footer, reveal, page hero, button)
+- [ ] Migration: form tables + RLS + grants
+- [ ] Server functions for form submissions (zod-validated)
+- [ ] Home page
+- [ ] About page
+- [ ] Our Work page
+- [ ] Our Impact page
+- [ ] Get Involved page (volunteer + partnership forms)
+- [ ] Donate page (multi-step flow, no fake payments)
+- [ ] Contact page (message form)
+- [ ] Tests (validation rules, donation honesty, content flags)
+- [ ] Playwright verification (desktop + mobile, all 7 routes)
+- [ ] Head metadata per route
